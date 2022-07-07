@@ -40,7 +40,7 @@ public class UI {
 
     private static Integer getShift()
         throws IOException {
-            System.out.println("Enter shift (for dictionary decoder use NaN):");
+            System.out.println("Enter shift:");
             String shift = reader.readLine();
             try {
                 return Integer.parseInt(shift);
@@ -53,7 +53,8 @@ public class UI {
         try {
             IProgram p = getProgram();
             if(p == null) return new Payload(null, null, null);
-            return new Payload(p, getText(), getShift());
+            if(p.getClass() == new DictionaryDecoder().getClass()) return new Payload(p, getText(), null);
+            else return new Payload(p, getText(), getShift());
         } catch(IOException ex) {
             throw new Error("Input error");
         } catch(ProgramException ex) {

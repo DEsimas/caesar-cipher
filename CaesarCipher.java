@@ -14,7 +14,9 @@ public class CaesarCipher {
                 System.out.println("Wrong program\n");
                 continue;
             }
+
             if(data.program == null) return;
+
             if(data.program.getClass() != new DictionaryDecoder().getClass() && data.shift == null) {
                 System.out.println("Wrong shift\n");
                 continue;
@@ -23,6 +25,7 @@ public class CaesarCipher {
             data.program.setString(data.text);
             data.program.setShift(data.shift);
             data.program.execute();
+            
             System.out.println("\nResult:");
             System.out.println(data.program.getString() + '\n');
         }
